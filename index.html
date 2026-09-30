@@ -268,7 +268,21 @@
 
         </button>
 
+<button class="envelope-button" type="button">
 
+    <div class="envelope">
+
+        <div class="envelope-body"></div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="envelope-left"></div>
+
+        <div class="envelope-right"></div>
+
+    </div>
+
+</button>
         <div class="hint">
             Clique sur le cadeau
         </div>
@@ -436,8 +450,95 @@
             }
 
         });
+/* =========================
+   ENVELOPPE
+========================= */
 
+.envelope-button {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 180px;
+    height: 120px;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 100px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-top: 65px solid #D95A5C;
+
+    z-index: 2;
+}
+
+.envelope-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 90px solid #6F9DB5;
+
+    z-index: 3;
+}
+
+.envelope-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 90px solid #6F9DB5;
+
+    z-index: 3;
+}
     </script>
+    <script>
+
+    const giftButton =
+        document.querySelector(".gift-button");
+
+
+    giftButton.addEventListener("click", function () {
+
+        // plein de code pour les confettis...
+
+    });
+
+</script>
+
+</body>
+
+</html>
 
 </body>
 
