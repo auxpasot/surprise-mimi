@@ -1,221 +1,291 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Une petite surprise ❤️</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
-<script>
-    const giftButton = document.querySelector(".gift-button");
 
-    giftButton.addEventListener("click", function () {
-
-        for (let i = 0; i < 80; i++) {
-
-            const confetti = document.createElement("div");
-
-            confetti.style.position = "fixed";
-            confetti.style.width = "8px";
-            confetti.style.height = "12px";
-
-            confetti.style.backgroundColor =
-                ["#D95A5C", "#6F9DB5", "#F1ACAD", "#FFFFFF"][Math.floor(Math.random() * 4)];
-
-            confetti.style.left = Math.random() * 100 + "vw";
-            confetti.style.top = "-20px";
-
-            confetti.style.transform =
-                "rotate(" + Math.random() * 360 + "deg)";
-
-            confetti.style.zIndex = "1000";
-
-            document.body.appendChild(confetti);
-
-            const duration = 1500 + Math.random() * 1500;
-
-            confetti.animate(
-                [
-                    {
-                        transform:
-                            "translateY(0) rotate(0deg)"
-                    },
-                    {
-                        transform:
-                            "translateY(110vh) rotate(720deg)"
-                    }
-                ],
-                {
-                    duration: duration,
-                    easing: "ease-in",
-                    fill: "forwards"
-                }
-            );
-
-            setTimeout(() => {
-                confetti.remove();
-            }, duration);
-        }
-    });
-</script>
         body {
             margin: 0;
             min-height: 100vh;
             background-color: #F1ACAD;
+
             font-family: Arial, sans-serif;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            color: #ffffff;
+
+            color: white;
+
+            overflow: hidden;
         }
+
+
+        /* ------------------------------
+           CONTENU DE LA PAGE
+        ------------------------------ */
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+
             gap: 30px;
         }
+
 
         h1 {
             font-size: 28px;
             font-weight: 500;
+
             margin: 0;
         }
+
 
         p {
             font-size: 17px;
-            margin: 0;
+
+            margin: 10px 0 0;
         }
 
-        /* Le cadeau */
+
+        .hint {
+            font-size: 14px;
+
+            opacity: 0.9;
+        }
+
+
+        /* ------------------------------
+           BOUTON DU CADEAU
+        ------------------------------ */
 
         .gift-button {
+
             border: none;
+
             background: transparent;
+
             cursor: pointer;
+
             padding: 20px;
+
             transition: transform 0.2s ease;
         }
 
+
         .gift-button:hover {
+
             transform: scale(1.08);
         }
 
+
         .gift-button:active {
+
             transform: scale(0.95);
         }
 
+
+        /* ------------------------------
+           CADEAU
+        ------------------------------ */
+
         .gift {
+
             position: relative;
+
             width: 130px;
             height: 115px;
         }
 
+
         /* Boîte */
 
         .box {
+
             position: absolute;
+
             bottom: 0;
             left: 5px;
+
             width: 120px;
             height: 85px;
+
             background-color: #D95A5C;
+
             border-radius: 5px;
         }
+
 
         /* Couvercle */
 
         .lid {
+
             position: absolute;
+
             top: 18px;
             left: 0;
+
             width: 130px;
             height: 25px;
+
             background-color: #D95A5C;
+
             border-radius: 5px;
+
             z-index: 2;
         }
+
 
         /* Ruban vertical */
 
         .ribbon-vertical {
+
             position: absolute;
+
             top: 18px;
             left: 52px;
+
             width: 26px;
             height: 97px;
+
             background-color: #6F9DB5;
+
             z-index: 3;
         }
+
 
         /* Ruban horizontal */
 
         .ribbon-horizontal {
+
             position: absolute;
+
             top: 18px;
             left: 0;
+
             width: 130px;
             height: 25px;
+
             background-color: #6F9DB5;
+
             z-index: 4;
-            opacity: 0.95;
         }
 
-        /* Petit nœud */
+
+        /* Nœud */
 
         .bow-left,
         .bow-right {
+
             position: absolute;
+
             top: 0;
+
             width: 42px;
             height: 30px;
+
             background-color: #6F9DB5;
+
             border-radius: 50%;
+
             z-index: 5;
         }
 
+
         .bow-left {
+
             left: 28px;
+
             transform: rotate(-25deg);
         }
 
+
         .bow-right {
+
             right: 28px;
+
             transform: rotate(25deg);
         }
 
+
         .bow-center {
+
             position: absolute;
+
             top: 8px;
             left: 57px;
+
             width: 18px;
             height: 18px;
+
             border-radius: 50%;
+
             background-color: #6F9DB5;
+
             z-index: 6;
         }
 
-        .hint {
-            font-size: 14px;
-            opacity: 0.9;
+
+        /* ------------------------------
+           PETITS CONFETTIS
+        ------------------------------ */
+
+        .confetti {
+
+            position: fixed;
+
+            width: 8px;
+            height: 12px;
+
+            z-index: 1000;
+
+            pointer-events: none;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
     <main class="container">
 
+
         <div>
-            <h1>J'ai une petite surprise pour toi ❤️</h1>
-            <p>Mais il va falloir ouvrir le cadeau...</p>
+
+            <h1>
+                J'ai une petite surprise pour toi ❤️
+            </h1>
+
+            <p>
+                Mais il va falloir ouvrir le cadeau...
+            </p>
+
         </div>
 
-        <button class="gift-button" aria-label="Ouvrir le cadeau">
+
+        <!-- CADEAU -->
+
+        <button
+            class="gift-button"
+            aria-label="Ouvrir le cadeau"
+            type="button"
+        >
+
             <div class="gift">
 
                 <div class="box"></div>
@@ -227,17 +297,159 @@
                 <div class="ribbon-horizontal"></div>
 
                 <div class="bow-left"></div>
+
                 <div class="bow-right"></div>
+
                 <div class="bow-center"></div>
 
             </div>
+
         </button>
+
 
         <div class="hint">
             Clique sur le cadeau
         </div>
 
+
     </main>
 
+
+
+    <!-- ------------------------------
+         JAVASCRIPT : CONFETTIS
+    ------------------------------ -->
+
+    <script>
+
+        const giftButton =
+            document.querySelector(".gift-button");
+
+
+        giftButton.addEventListener("click", function () {
+
+
+            /* Nombre de confettis */
+
+            for (let i = 0; i < 80; i++) {
+
+
+                /* Création d'un confetti */
+
+                const confetti =
+                    document.createElement("div");
+
+
+                confetti.classList.add("confetti");
+
+
+                /* Couleurs de notre palette */
+
+                const colors = [
+
+                    "#D95A5C",
+                    "#6F9DB5",
+                    "#F1ACAD",
+                    "#FFFFFF"
+
+                ];
+
+
+                const randomColor =
+                    colors[
+                        Math.floor(
+                            Math.random() * colors.length
+                        )
+                    ];
+
+
+                confetti.style.backgroundColor =
+                    randomColor;
+
+
+                /* Position horizontale aléatoire */
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+
+                /* Départ au-dessus de l'écran */
+
+                confetti.style.top = "-20px";
+
+
+                /* Rotation aléatoire */
+
+                confetti.style.transform =
+                    "rotate(" +
+                    Math.random() * 360 +
+                    "deg)";
+
+
+                /* Ajout du confetti à la page */
+
+                document.body.appendChild(confetti);
+
+
+                /* Durée de la chute */
+
+                const duration =
+                    1500 +
+                    Math.random() * 1500;
+
+
+                /* Animation */
+
+                confetti.animate(
+
+                    [
+
+                        {
+                            transform:
+                                "translateY(0) rotate(0deg)"
+                        },
+
+                        {
+                            transform:
+                                "translateY(110vh) rotate(720deg)"
+                        }
+
+                    ],
+
+                    {
+
+                        duration: duration,
+
+                        easing: "ease-in",
+
+                        fill: "forwards"
+
+                    }
+
+                );
+
+
+                /* Suppression après l'animation */
+
+                setTimeout(
+
+                    () => {
+
+                        confetti.remove();
+
+                    },
+
+                    duration
+
+                );
+
+            }
+
+        });
+
+    </script>
+
+
 </body>
+
 </html>
