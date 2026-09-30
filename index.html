@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Une petite surprise ❤️</title>
 
@@ -16,6 +18,7 @@
         body {
             margin: 0;
             min-height: 100vh;
+
             background-color: #F1ACAD;
 
             font-family: Arial, sans-serif;
@@ -27,14 +30,7 @@
             text-align: center;
 
             color: white;
-
-            overflow: hidden;
         }
-
-
-        /* ------------------------------
-           CONTENU DE LA PAGE
-        ------------------------------ */
 
         .container {
             display: flex;
@@ -44,7 +40,6 @@
             gap: 30px;
         }
 
-
         h1 {
             font-size: 28px;
             font-weight: 500;
@@ -52,13 +47,11 @@
             margin: 0;
         }
 
-
         p {
             font-size: 17px;
 
             margin: 10px 0 0;
         }
-
 
         .hint {
             font-size: 14px;
@@ -67,9 +60,9 @@
         }
 
 
-        /* ------------------------------
-           BOUTON DU CADEAU
-        ------------------------------ */
+        /* =========================
+           CADEAU
+        ========================= */
 
         .gift-button {
 
@@ -84,22 +77,13 @@
             transition: transform 0.2s ease;
         }
 
-
         .gift-button:hover {
-
             transform: scale(1.08);
         }
 
-
         .gift-button:active {
-
             transform: scale(0.95);
         }
-
-
-        /* ------------------------------
-           CADEAU
-        ------------------------------ */
 
         .gift {
 
@@ -108,9 +92,6 @@
             width: 130px;
             height: 115px;
         }
-
-
-        /* Boîte */
 
         .box {
 
@@ -126,9 +107,6 @@
 
             border-radius: 5px;
         }
-
-
-        /* Couvercle */
 
         .lid {
 
@@ -147,9 +125,6 @@
             z-index: 2;
         }
 
-
-        /* Ruban vertical */
-
         .ribbon-vertical {
 
             position: absolute;
@@ -165,9 +140,6 @@
             z-index: 3;
         }
 
-
-        /* Ruban horizontal */
-
         .ribbon-horizontal {
 
             position: absolute;
@@ -182,9 +154,6 @@
 
             z-index: 4;
         }
-
-
-        /* Nœud */
 
         .bow-left,
         .bow-right {
@@ -203,7 +172,6 @@
             z-index: 5;
         }
 
-
         .bow-left {
 
             left: 28px;
@@ -211,14 +179,12 @@
             transform: rotate(-25deg);
         }
 
-
         .bow-right {
 
             right: 28px;
 
             transform: rotate(25deg);
         }
-
 
         .bow-center {
 
@@ -238,9 +204,9 @@
         }
 
 
-        /* ------------------------------
-           PETITS CONFETTIS
-        ------------------------------ */
+        /* =========================
+           CONFETTIS
+        ========================= */
 
         .confetti {
 
@@ -249,9 +215,9 @@
             width: 8px;
             height: 12px;
 
-            z-index: 1000;
-
             pointer-events: none;
+
+            z-index: 9999;
         }
 
     </style>
@@ -261,9 +227,7 @@
 
 <body>
 
-
     <main class="container">
-
 
         <div>
 
@@ -278,12 +242,10 @@
         </div>
 
 
-        <!-- CADEAU -->
-
         <button
             class="gift-button"
-            aria-label="Ouvrir le cadeau"
             type="button"
+            aria-label="Ouvrir le cadeau"
         >
 
             <div class="gift">
@@ -311,14 +273,8 @@
             Clique sur le cadeau
         </div>
 
-
     </main>
 
-
-
-    <!-- ------------------------------
-         JAVASCRIPT : CONFETTIS
-    ------------------------------ -->
 
     <script>
 
@@ -329,73 +285,93 @@
         giftButton.addEventListener("click", function () {
 
 
-            /* Nombre de confettis */
+            const colors = [
+                "#D95A5C",
+                "#6F9DB5",
+                "#FFFFFF"
+            ];
 
-            for (let i = 0; i < 80; i++) {
 
+            /* Création des confettis */
 
-                /* Création d'un confetti */
+            for (let i = 0; i < 60; i++) {
+
 
                 const confetti =
                     document.createElement("div");
 
 
-                confetti.classList.add("confetti");
+                confetti.className =
+                    "confetti";
 
 
-                /* Couleurs de notre palette */
+                /* Couleur */
 
-                const colors = [
-
-                    "#D95A5C",
-                    "#6F9DB5",
-                    "#F1ACAD",
-                    "#FFFFFF"
-
-                ];
-
-
-                const randomColor =
+                confetti.style.backgroundColor =
                     colors[
                         Math.floor(
-                            Math.random() * colors.length
+                            Math.random() *
+                            colors.length
                         )
                     ];
 
 
-                confetti.style.backgroundColor =
-                    randomColor;
+                /* Position de départ :
+                   autour du cadeau */
+
+                const rect =
+                    giftButton.getBoundingClientRect();
 
 
-                /* Position horizontale aléatoire */
+                const startX =
+                    rect.left +
+                    rect.width / 2;
+
+
+                const startY =
+                    rect.top +
+                    rect.height / 2;
+
 
                 confetti.style.left =
-                    Math.random() * 100 + "vw";
+                    startX + "px";
 
 
-                /* Départ au-dessus de l'écran */
-
-                confetti.style.top = "-20px";
-
-
-                /* Rotation aléatoire */
-
-                confetti.style.transform =
-                    "rotate(" +
-                    Math.random() * 360 +
-                    "deg)";
+                confetti.style.top =
+                    startY + "px";
 
 
-                /* Ajout du confetti à la page */
+                document.body.appendChild(
+                    confetti
+                );
 
-                document.body.appendChild(confetti);
+
+                /* Direction aléatoire */
+
+                const angle =
+                    Math.random() *
+                    Math.PI *
+                    2;
 
 
-                /* Durée de la chute */
+                const distance =
+                    100 +
+                    Math.random() * 180;
 
-                const duration =
-                    1500 +
-                    Math.random() * 1500;
+
+                const x =
+                    Math.cos(angle) *
+                    distance;
+
+
+                const y =
+                    Math.sin(angle) *
+                    distance;
+
+
+                const rotation =
+                    Math.random() *
+                    720;
 
 
                 /* Animation */
@@ -406,40 +382,54 @@
 
                         {
                             transform:
-                                "translateY(0) rotate(0deg)"
+                                "translate(0, 0) rotate(0deg)",
+
+                            opacity: 1
                         },
 
                         {
                             transform:
-                                "translateY(110vh) rotate(720deg)"
+                                "translate(" +
+                                x +
+                                "px, " +
+                                y +
+                                "px) rotate(" +
+                                rotation +
+                                "deg)",
+
+                            opacity: 0
                         }
 
                     ],
 
                     {
 
-                        duration: duration,
+                        duration:
+                            900 +
+                            Math.random() * 700,
 
-                        easing: "ease-in",
+                        easing:
+                            "cubic-bezier(.2,.8,.3,1)",
 
-                        fill: "forwards"
+                        fill:
+                            "forwards"
 
                     }
 
                 );
 
 
-                /* Suppression après l'animation */
+                /* Supprimer le confetti */
 
                 setTimeout(
 
-                    () => {
+                    function () {
 
                         confetti.remove();
 
                     },
 
-                    duration
+                    1800
 
                 );
 
@@ -448,7 +438,6 @@
         });
 
     </script>
-
 
 </body>
 
