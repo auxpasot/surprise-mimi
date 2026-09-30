@@ -4,15 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Une petite surprise ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #F1ACAD;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        p {
+            font-size: 17px;
+            margin: 0;
+        }
+
+        /* Le cadeau */
+
+        .gift-button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .gift-button:hover {
+            transform: scale(1.08);
+        }
+
+        .gift-button:active {
+            transform: scale(0.95);
+        }
+
+        .gift {
+            position: relative;
+            width: 130px;
+            height: 115px;
+        }
+
+        /* Boîte */
+
+        .box {
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+            width: 120px;
+            height: 85px;
+            background-color: #DB2EB1;
+            border-radius: 5px;
+        }
+
+        /* Couvercle */
+
+        .lid {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 130px;
+            height: 25px;
+            background-color: #DB2EB1;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        /* Ruban vertical */
+
+        .ribbon-vertical {
+            position: absolute;
+            top: 18px;
+            left: 52px;
+            width: 26px;
+            height: 97px;
+            background-color: #498BC1;
+            z-index: 3;
+        }
+
+        /* Ruban horizontal */
+
+        .ribbon-horizontal {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 130px;
+            height: 25px;
+            background-color: #498BC1;
+            z-index: 4;
+            opacity: 0.95;
+        }
+
+        /* Petit nœud */
+
+        .bow-left,
+        .bow-right {
+            position: absolute;
+            top: 0;
+            width: 42px;
+            height: 30px;
+            background-color: #498BC1;
+            border-radius: 50%;
+            z-index: 5;
+        }
+
+        .bow-left {
+            left: 28px;
+            transform: rotate(-25deg);
+        }
+
+        .bow-right {
+            right: 28px;
+            transform: rotate(25deg);
+        }
+
+        .bow-center {
+            position: absolute;
+            top: 8px;
+            left: 57px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #498BC1;
+            z-index: 6;
+        }
+
+        .hint {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>J'ai une petite surprise pour toi ❤️</h1>
+    <main class="container">
 
-    <p>Mais il va falloir cliquer pour la découvrir...</p>
+        <div>
+            <h1>J'ai une petite surprise pour toi ❤️</h1>
+            <p>Mais il va falloir ouvrir le cadeau...</p>
+        </div>
 
-    <button>Découvrir ma surprise</button>
+        <button class="gift-button" aria-label="Ouvrir le cadeau">
+            <div class="gift">
+
+                <div class="box"></div>
+
+                <div class="lid"></div>
+
+                <div class="ribbon-vertical"></div>
+
+                <div class="ribbon-horizontal"></div>
+
+                <div class="bow-left"></div>
+                <div class="bow-right"></div>
+                <div class="bow-center"></div>
+
+            </div>
+        </button>
+
+        <div class="hint">
+            Clique sur le cadeau 🎁
+        </div>
+
+    </main>
 
 </body>
 </html>
