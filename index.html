@@ -2,18 +2,20 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Une petite surprise ❤️</title>
+
 
     <style>
 
         * {
             box-sizing: border-box;
         }
+
 
         body {
             margin: 0;
@@ -32,6 +34,7 @@
             color: white;
         }
 
+
         .container {
             display: flex;
             flex-direction: column;
@@ -40,6 +43,7 @@
             gap: 30px;
         }
 
+
         h1 {
             font-size: 28px;
             font-weight: 500;
@@ -47,11 +51,13 @@
             margin: 0;
         }
 
+
         p {
             font-size: 17px;
 
             margin: 10px 0 0;
         }
+
 
         .hint {
             font-size: 14px;
@@ -77,13 +83,16 @@
             transition: transform 0.2s ease;
         }
 
+
         .gift-button:hover {
             transform: scale(1.08);
         }
 
+
         .gift-button:active {
             transform: scale(0.95);
         }
+
 
         .gift {
 
@@ -92,6 +101,7 @@
             width: 130px;
             height: 115px;
         }
+
 
         .box {
 
@@ -107,6 +117,7 @@
 
             border-radius: 5px;
         }
+
 
         .lid {
 
@@ -125,6 +136,7 @@
             z-index: 2;
         }
 
+
         .ribbon-vertical {
 
             position: absolute;
@@ -140,6 +152,7 @@
             z-index: 3;
         }
 
+
         .ribbon-horizontal {
 
             position: absolute;
@@ -154,6 +167,7 @@
 
             z-index: 4;
         }
+
 
         .bow-left,
         .bow-right {
@@ -172,6 +186,7 @@
             z-index: 5;
         }
 
+
         .bow-left {
 
             left: 28px;
@@ -179,12 +194,14 @@
             transform: rotate(-25deg);
         }
 
+
         .bow-right {
 
             right: 28px;
 
             transform: rotate(25deg);
         }
+
 
         .bow-center {
 
@@ -220,6 +237,221 @@
             z-index: 9999;
         }
 
+
+        /* =========================
+           ENVELOPPE
+        ========================= */
+
+        .envelope-section {
+
+            display: none;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .envelope-button {
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            padding: 20px;
+
+            transition: transform 0.2s ease;
+        }
+
+
+        .envelope-button:hover {
+            transform: scale(1.06);
+        }
+
+
+        .envelope {
+
+            position: relative;
+
+            width: 220px;
+            height: 145px;
+
+            perspective: 600px;
+        }
+
+
+        .envelope-back {
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 220px;
+            height: 130px;
+
+            background-color: white;
+
+            border-radius: 6px;
+
+            z-index: 1;
+        }
+
+
+        .envelope-left {
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-top: 65px solid transparent;
+            border-bottom: 65px solid transparent;
+            border-left: 110px solid #6F9DB5;
+
+            z-index: 3;
+        }
+
+
+        .envelope-right {
+
+            position: absolute;
+
+            bottom: 0;
+            right: 0;
+
+            width: 0;
+            height: 0;
+
+            border-top: 65px solid transparent;
+            border-bottom: 65px solid transparent;
+            border-right: 110px solid #6F9DB5;
+
+            z-index: 3;
+        }
+
+
+        .envelope-bottom {
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-bottom: 70px solid #D95A5C;
+
+            z-index: 4;
+        }
+
+
+        .envelope-flap {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-top: 75px solid #D95A5C;
+
+            transform-origin: top center;
+
+            transition: transform 0.8s ease;
+
+            z-index: 5;
+        }
+
+
+        /* =========================
+           LETTRE
+        ========================= */
+
+        .letter {
+
+            display: none;
+
+            width: min(500px, 85vw);
+
+            background-color: white;
+
+            color: #555;
+
+            padding: 35px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+            text-align: left;
+
+            animation: letterAppear 0.8s ease forwards;
+        }
+
+
+        .letter h2 {
+
+            margin-top: 0;
+
+            color: #D95A5C;
+
+            text-align: center;
+
+            font-weight: 500;
+        }
+
+
+        .letter p {
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        @keyframes letterAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           ENVELOPPE OUVERTE
+        ========================= */
+
+        .envelope.open .envelope-flap {
+
+            transform: rotateX(180deg);
+
+        }
+
+
     </style>
 
 </head>
@@ -227,9 +459,13 @@
 
 <body>
 
+
     <main class="container">
 
-        <div>
+
+        <!-- PREMIÈRE PAGE -->
+
+        <section id="giftSection">
 
             <h1>
                 J'ai une petite surprise pour toi ❤️
@@ -239,65 +475,160 @@
                 Mais il va falloir ouvrir le cadeau...
             </p>
 
-        </div>
+
+            <button
+                class="gift-button"
+                id="giftButton"
+                type="button"
+                aria-label="Ouvrir le cadeau"
+            >
+
+                <div class="gift">
+
+                    <div class="box"></div>
+
+                    <div class="lid"></div>
+
+                    <div class="ribbon-vertical"></div>
+
+                    <div class="ribbon-horizontal"></div>
+
+                    <div class="bow-left"></div>
+
+                    <div class="bow-right"></div>
+
+                    <div class="bow-center"></div>
+
+                </div>
+
+            </button>
 
 
-        <button
-            class="gift-button"
-            type="button"
-            aria-label="Ouvrir le cadeau"
-        >
-
-            <div class="gift">
-
-                <div class="box"></div>
-
-                <div class="lid"></div>
-
-                <div class="ribbon-vertical"></div>
-
-                <div class="ribbon-horizontal"></div>
-
-                <div class="bow-left"></div>
-
-                <div class="bow-right"></div>
-
-                <div class="bow-center"></div>
-
+            <div class="hint">
+                Clique sur le cadeau
             </div>
 
-        </button>
+        </section>
 
-<button class="envelope-button" type="button">
 
-    <div class="envelope">
 
-        <div class="envelope-body"></div>
+        <!-- ENVELOPPE -->
 
-        <div class="envelope-flap"></div>
+        <section
+            class="envelope-section"
+            id="envelopeSection"
+        >
 
-        <div class="envelope-left"></div>
+            <h1>
+                Une petite lettre pour toi 💌
+            </h1>
 
-        <div class="envelope-right"></div>
 
-    </div>
+            <button
+                class="envelope-button"
+                id="envelopeButton"
+                type="button"
+                aria-label="Ouvrir l'enveloppe"
+            >
 
-</button>
-        <div class="hint">
-            Clique sur le cadeau
-        </div>
+                <div
+                    class="envelope"
+                    id="envelope"
+                >
+
+                    <div class="envelope-back"></div>
+
+                    <div class="envelope-left"></div>
+
+                    <div class="envelope-right"></div>
+
+                    <div class="envelope-bottom"></div>
+
+                    <div class="envelope-flap"></div>
+
+                </div>
+
+            </button>
+
+
+            <div class="hint">
+                Clique sur l'enveloppe
+            </div>
+
+        </section>
+
+
+
+        <!-- LETTRE -->
+
+        <section
+            class="letter"
+            id="letter"
+        >
+
+            <h2>
+                Pour toi ❤️
+            </h2>
+
+
+            <p>
+                J'avais envie de te préparer une petite surprise...
+            </p>
+
+
+            <p>
+                Et ce n'est que le début. ✨
+            </p>
+
+
+            <p>
+                J'espère que tu es prêt pour la suite !
+            </p>
+
+        </section>
+
 
     </main>
 
 
+
+    <!-- JAVASCRIPT -->
+
     <script>
 
-        const giftButton =
-            document.querySelector(".gift-button");
 
+        /* =========================
+           RÉCUPÉRATION DES ÉLÉMENTS
+        ========================= */
+
+        const giftButton =
+            document.getElementById("giftButton");
+
+        const giftSection =
+            document.getElementById("giftSection");
+
+        const envelopeSection =
+            document.getElementById("envelopeSection");
+
+        const envelopeButton =
+            document.getElementById("envelopeButton");
+
+        const envelope =
+            document.getElementById("envelope");
+
+        const letter =
+            document.getElementById("letter");
+
+
+
+        /* =========================
+           CLIC SUR LE CADEAU
+        ========================= */
 
         giftButton.addEventListener("click", function () {
 
+
+            /* Couleurs des confettis */
 
             const colors = [
                 "#D95A5C",
@@ -306,7 +637,7 @@
             ];
 
 
-            /* Création des confettis */
+            /* Création des 200 confettis */
 
             for (let i = 0; i < 200; i++) {
 
@@ -319,19 +650,17 @@
                     "confetti";
 
 
-                /* Couleur */
+                /* Couleur aléatoire */
 
                 confetti.style.backgroundColor =
                     colors[
                         Math.floor(
-                            Math.random() *
-                            colors.length
+                            Math.random() * colors.length
                         )
                     ];
 
 
-                /* Position de départ :
-                   autour du cadeau */
+                /* Position de départ */
 
                 const rect =
                     giftButton.getBoundingClientRect();
@@ -369,8 +698,8 @@
 
 
                 const distance =
-                    100 +
-                    Math.random() * 180;
+                    120 +
+                    Math.random() * 220;
 
 
                 const x =
@@ -433,7 +762,7 @@
                 );
 
 
-                /* Supprimer le confetti */
+                /* Suppression */
 
                 setTimeout(
 
@@ -449,96 +778,81 @@
 
             }
 
+
+
+            /* Après les confettis,
+               on fait disparaître le cadeau */
+
+            setTimeout(
+
+                function () {
+
+                    giftSection.style.display =
+                        "none";
+
+
+                    envelopeSection.style.display =
+                        "flex";
+
+                },
+
+                1300
+
+            );
+
         });
-/* =========================
-   ENVELOPPE
-========================= */
 
-.envelope-button {
-    display: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    padding: 20px;
-}
 
-.envelope {
-    position: relative;
-    width: 180px;
-    height: 120px;
-}
 
-.envelope-body {
-    position: absolute;
-    bottom: 0;
-    width: 180px;
-    height: 100px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-}
+        /* =========================
+           CLIC SUR L'ENVELOPPE
+        ========================= */
 
-.envelope-flap {
-    position: absolute;
-    top: 0;
-    left: 0;
+        envelopeButton.addEventListener(
+            "click",
+            function () {
 
-    width: 0;
-    height: 0;
 
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    border-top: 65px solid #D95A5C;
+                /* Ouvrir l'enveloppe */
 
-    z-index: 2;
-}
+                envelope.classList.add("open");
 
-.envelope-left {
-    position: absolute;
-    bottom: 0;
-    left: 0;
 
-    width: 0;
-    height: 0;
+                /* Faire disparaître le texte */
 
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
-    border-left: 90px solid #6F9DB5;
+                envelopeSection.querySelector("h1").style.opacity =
+                    "0";
 
-    z-index: 3;
-}
+                envelopeSection.querySelector(".hint").style.opacity =
+                    "0";
 
-.envelope-right {
-    position: absolute;
-    bottom: 0;
-    right: 0;
 
-    width: 0;
-    height: 0;
+                /* Après l'ouverture,
+                   afficher la lettre */
 
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
-    border-right: 90px solid #6F9DB5;
+                setTimeout(
 
-    z-index: 3;
-}
+                    function () {
+
+                        envelopeSection.style.display =
+                            "none";
+
+
+                        letter.style.display =
+                            "block";
+
+                    },
+
+                    900
+
+                );
+
+            }
+        );
+
+
     </script>
-    <script>
 
-    const giftButton =
-        document.querySelector(".gift-button");
-
-
-    giftButton.addEventListener("click", function () {
-
-        // plein de code pour les confettis...
-
-    });
-
-</script>
-
-</body>
-
-</html>
 
 </body>
 
